@@ -46,6 +46,7 @@ start_time = time.time()
 print('-- Performing DC-QAOA --')
 m = DC_QAOA(Qs, As, e, p, n_candidates, max_community_size)
 m.optimized(maxiter=20)
+m.to_json(f"p-{p}.json")
 
 # Perform Greedy Provision Reduction on top of DC QAOA solutions
 print('-- Performing GPR on top of DC QAOA --')
