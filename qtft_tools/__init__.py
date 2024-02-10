@@ -110,6 +110,21 @@ class DC_QAOA():
         with open(file_name, "w") as f:
             json.dump(self.to_dict(), f, indent=4)
 
+    @classmethod
+    def from_json(cls, file_name: str):
+        with open(file_name) as json_file:
+            info_dict = json.load(json_file)
+        res = DC_QAOA(Qs=np.identity(2), As=np.identity(2))
+        res.e = info_dict['e']
+        res.p = info_dict['p']
+        res.n_candidates = info_dict['n_candidates']
+        res.max_community_size = info_dict['max_community_size']
+        res.N = info_dict['N']
+        res.M = info_dict['M']
+        res.groups = [Group.from_dict(group) for group in info_dict['groups']]
+        res.res = info_dict['res']
+        return res
+
     def optimized(self, maxiter=20, method='COBYLA', use_cache=True):
 
         # Step 1: Community Detection
