@@ -103,7 +103,7 @@ class DC_QAOA():
             N=self.N,
             M=self.M,
             groups=[group.to_dict() for group in self.groups],
-            res=self.res.to_dict if self.res else None
+            res=self.res.to_dict() if self.res else None
         )
 
     def to_json(self, file_name: str):

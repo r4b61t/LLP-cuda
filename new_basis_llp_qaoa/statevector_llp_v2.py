@@ -17,7 +17,7 @@ from functools import cached_property
 
 from tqdm import tqdm
 
-import numpy as np
+import cupy as np
 import numpy
 from collections import namedtuple
 

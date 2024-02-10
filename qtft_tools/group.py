@@ -56,14 +56,6 @@ class Group:
         self.c_exact = None
         self.c_qaoa = None
 
-    def approximation_ratio(self):
-        expected_energy = 0
-        for c, p in zip(self.cs, self.ps):
-            if c > 0:
-                continue
-            expected_energy += c * p
-        return expected_energy / self.c_exact
-
     def show(self):
 
         print("id:" + self.id + ", nodes:" + str(self.nodes) + ", size:" + str(self.size))

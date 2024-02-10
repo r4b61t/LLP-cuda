@@ -14,8 +14,11 @@ As = sparse.load_npz('data/As.npz').toarray()
 # Provision constraints
 Ls = sparse.load_npz('data/Ls.npz').toarray()
 
-Qs_with_4_actions = Qs.copy()[:, :4]
+Qs_no_negatives = Qs.copy()
+Qs_no_negatives[Qs_no_negatives < 0] = 0
+Qs_with_4_actions = Qs_no_negatives[:, :4]
 Ls_with_4_actions = Ls.copy()[:, :4]
+
 
 selected_number_of_loanees = 600
 
